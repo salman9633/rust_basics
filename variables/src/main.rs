@@ -10,6 +10,7 @@ fn main() {
 
     /* const */
     const THREE_HOUR: u32 = 60 * 3; //const variables are always immutable
-                                    //Constants are globally scoped and can be accessed from anywhere in the program.
+    //Constants are globally scoped and can be accessed from anywhere in the program.
+    //for const the naming convention is UPPER_CASE (uppercase with underscore for seperation)
     println!("Three Hours: {}", THREE_HOUR);
 }
