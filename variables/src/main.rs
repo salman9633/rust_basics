@@ -20,13 +20,30 @@ fn main() {
         let x = x + 1;
 
         {
-            let x = x * 2;//hre value of x will be 12
+            let x = x * 2; //hre value of x will be 12
             println!("The value of x in the inner scope is: {x}");
 
             //after ending this scope the x value will comes to 6 again
         }
 
         println!("The value of x is: {x}");
+
+        let spaces = "    ";
+        println!("The value of spaces is: {spaces}");
+        let spaces = spaces.len();
+        println!("The value of spaces is: {spaces}");
+
+        //with by just using let you can reassign a variable to that even if are reassigning an different data type
+
+        //but if you use mut and then try this you will get a compile time error
+
+        /*
+        let mut x="   ";
+        x = x.len();
+
+        //you will get compile time error
+        */
+
     }
 
     shadowing();
