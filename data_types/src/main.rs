@@ -26,4 +26,21 @@ fn main() {
     //indexing start from 0
     let first_tup = newTup.0;
     println!("First element of Tuple: {first_tup}");
+
+    //Array
+    let arr = [1, 2, 3, 4, 5];
+    println!("Array: {:?}", arr);
+    //every element of an array must have the same type. Unlike arrays in some other languages, arrays in Rust have a fixed length.
+
+    let newArr:[i32;5] = [1, 2, 3, 4, 5];
+    //in above the sqaure brackets tell the compiler that this is an array of 5 elements of type i32
+
+    //You can also initialize an array to contain the same value for each element by specifying the initial value, followed by a semicolon, and then the length of the array in square bracket
+    let same_value_array = [3; 5];
+    //the above will be same like [3, 3, 3, 3, 3]
+    println!("Same Value Array: {:?}", same_value_array);
+
+    //access an array element using indexing
+    let a = same_value_array[0];
+    println!("First element of Array: {a}");
 }
