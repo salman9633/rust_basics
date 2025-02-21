@@ -43,4 +43,10 @@ fn main() {
     //access an array element using indexing
     let a = same_value_array[0];
     println!("First element of Array: {a}");
+     
+     new_function();
+}
+
+fn new_function() {//Rust code uses snake case as the conventional style for function and variable names, in which all letters are lowercase and underscores separate words
+    println!("This is a new function");
 }
