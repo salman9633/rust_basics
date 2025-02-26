@@ -28,11 +28,13 @@ fn main() {
 
     let my_str = String::from("Another Case");
 
-    take_ownership(my_str);
+    take_ownership(my_str.clone());
     println!("The value of my_str is: {}", my_str); //In this case it will give you Error
 
     /*
     Same error case will follw here also
+
+    we can avoid the error by using clone method, what it will do is it will create another "Another Case" string in heap
     */ 
 }
 
