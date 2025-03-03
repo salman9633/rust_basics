@@ -14,6 +14,6 @@ fn main() {
      */
 }
 
-fn calculate_length(s: &String) -> usize {
+fn calculate_length(s: &String) -> usize {//borrowing here
     return s.len();
 }
