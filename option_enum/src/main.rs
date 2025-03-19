@@ -20,8 +20,8 @@ fn main() {
 
 }
 
-fn find_a_character(word,chara)->Option<usize>{
-    for (index,character) in s.chars().enumerate(){
+fn find_a_character(word:String,chara:char)->Option<usize>{
+    for (index,character) in word.chars().enumerate(){
         if character==chara{
             return Some(index);
         }
