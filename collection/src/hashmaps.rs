@@ -17,13 +17,30 @@ pub fn hash_maps() {
 
     users.insert(String::from("salman"), 24);
     users.insert(String::from("faris"), 2);
+    users.insert(String::from("leo"), 21);
+    users.insert(String::from("jose"), 28);
+    users.insert(String::from("thomas"), 12);
+    users.insert(String::from("carius"), 15);
 
     let age_find = users.get("fars");
 
     // println!("age is {}", age_find);
+    hashmap_iteration(&users);
     match age_find {
-        Some(age)=> println!("age is {}", age),
-        None=>println!("no age found")
+        Some(age) => println!("age is {}", age),
+        None => println!("no age found"),
     }
-   
+}
+
+fn hashmap_iteration(users: &std::collections::HashMap<String, i32>) {
+    let mut name_vec  = Vec::new();
+    let mut age_vec = Vec::new();
+    for (name, age) in users {
+        name_vec.push(name);
+        age_vec.push(age);
+    }
+
+    println!("user hash{:?}",users);
+    println!("age Vec{:?}",age_vec);
+    println!("name Vec{:?}",name_vec);
 }
