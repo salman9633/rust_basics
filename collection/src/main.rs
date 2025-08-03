@@ -1,5 +1,8 @@
+mod hashmaps;
+
 fn main() {
     vectors();
+    hashmaps::hash_maps();
 }
 
 fn vectors(){
