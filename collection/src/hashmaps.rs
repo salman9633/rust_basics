@@ -25,22 +25,26 @@ pub fn hash_maps() {
     let age_find = users.get("fars");
 
     // println!("age is {}", age_find);
-    hashmap_iteration(&users);
+    let (name, age) = hashmap_iteration(&users);
+     println!("age Vec return {:?}", age);
+    println!("name Vec return {:?}", name);
     match age_find {
         Some(age) => println!("age is {}", age),
         None => println!("no age found"),
     }
 }
 
-fn hashmap_iteration(users: &std::collections::HashMap<String, i32>) {
-    let mut name_vec  = Vec::new();
+fn hashmap_iteration(users: &std::collections::HashMap<String, i32>)->(Vec<&String>, Vec<&i32>) {
+    let mut name_vec = Vec::new();
     let mut age_vec = Vec::new();
     for (name, age) in users {
         name_vec.push(name);
         age_vec.push(age);
     }
 
-    println!("user hash{:?}",users);
-    println!("age Vec{:?}",age_vec);
-    println!("name Vec{:?}",name_vec);
+    println!("user hash{:?}", users);
+    println!("age Vec{:?}", age_vec);
+    println!("name Vec{:?}", name_vec);
+
+    return (name_vec, age_vec);
 }
