@@ -1,3 +1,7 @@
+mod practice_struct;
+
+use practice_struct::create_book;
+
 struct User {
     name: String,
     age: u8,
@@ -38,6 +42,8 @@ fn main() {
         width: 50,
         height: 20,
     };
-    println!("The Area Of The Rectangle Is: {}", rect.area_of_rectangle())
+    println!("The Area Of The Rectangle Is: {}", rect.area_of_rectangle());
+
+    create_book(String::from("Fire & blood"),String::from("George RR Martin"),250);
 
 }
