@@ -1,6 +1,7 @@
 mod practice_struct;
 
 use practice_struct::create_book;
+use practice_struct::Book;
 
 struct User {
     name: String,
@@ -54,4 +55,11 @@ fn main() {
     );
 
     create_book(String::from("Dance Of Dragons"), &author, 30);
+
+    let book1=Book::new("TALE OF SOUTH","ROBERT",30);
+
+    println!("{}",book1.title);
+    println!("{}",book1.author);
+    println!("{}",book1.page);
+    
 }
