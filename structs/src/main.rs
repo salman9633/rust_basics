@@ -14,7 +14,8 @@ struct Rectangle {
 }
 
 impl Rectangle {
-    fn area_of_rectangle(&self) -> u32 {//this self variable have a access to the struct, just like we are using this keyword
+    fn area_of_rectangle(&self) -> u32 {
+        //this self variable have a access to the struct, just like we are using this keyword
         self.width * self.height
     }
 }
@@ -38,12 +39,19 @@ fn main() {
     very similar to classes in TS
     */
 
-    let rect = Rectangle{
+    let rect = Rectangle {
         width: 50,
         height: 20,
     };
     println!("The Area Of The Rectangle Is: {}", rect.area_of_rectangle());
 
-    create_book(String::from("Fire & blood"),String::from("George RR Martin"),250);
+    let title = String::from("Fire & blood");
+    let author = String::from("George RR Martin");
+    create_book(
+        title,
+        &author,
+        250,
+    );
 
+    create_book(String::from("Dance Of Dragons"), &author, 30);
 }
