@@ -45,5 +45,13 @@ pub fn tuple_example() {
 
     println!("{}-{}-{}", name, pages, rating);
 
-    
+    /* Changing values in tuple */
+
+    let mut dimention = (30, 60);
+
+    println!("{:?}", dimention);
+
+    dimention.0 = 50;
+
+    println!("{:?}", dimention);
 }
