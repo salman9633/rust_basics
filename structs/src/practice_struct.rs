@@ -55,6 +55,9 @@ pub fn create_book(title: String, author: &String, page: u32) {
     let area = rect.area();
     let perimeter = rect.perimeter();
     println!("AREA {}, PERIMETE{}", area, perimeter);
+
+    let sqr=Rectangle::to_square(50);
+    
 }
 
 /* method using struct */
@@ -70,5 +73,15 @@ impl Rectangle {
 
     fn can_hold(&self, other: &Rectangle) -> bool {
         return self.width > other.width && self.hieght > other.hieght;
+    }
+
+}
+
+/* Associated Functions */
+// An associated function is a function defined inside an impl block that does NOT take self.
+
+impl  Rectangle{
+    fn to_square(size:u32)->Rectangle{
+        return Rectangle { width: size, hieght: size };
     }
 }
