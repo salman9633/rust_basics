@@ -54,4 +54,19 @@ pub fn tuple_example() {
     dimention.0 = 50;
 
     println!("{:?}", dimention);
+
+    /* Function + tuple */
+
+    let (num1, num2) = (35, 30);
+    fn stat(num1: i32, num2: i32) -> (i32, i32, i32) {
+        let prod = num1 * num2;
+        let add = num1 + num2;
+        let div = num1 / num2;
+
+        return (prod, add, div);
+    }
+
+    let res = stat(num1, num2);
+
+    println!("{:?}", res);
 }
