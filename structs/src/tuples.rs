@@ -69,4 +69,14 @@ pub fn tuple_example() {
     let res = stat(num1, num2);
 
     println!("{:?}", res);
+
+    /* tuple struct */
+
+    struct RGB(i32, u32, u32);
+
+    let rgb = RGB(-30, 0, 60);
+
+    println!("{}", rgb.0);
+    println!("{}", rgb.1);
+    println!("{}", rgb.2);
 }
