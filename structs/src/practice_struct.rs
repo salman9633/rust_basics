@@ -4,6 +4,11 @@ pub struct Book {
     pub page: u32,
 }
 
+struct Rectangle {
+    width: u32,
+    hieght: u32,
+}
+
 impl Book {
     pub fn new(title: &str, author: &str, page: u32) -> Self {
         Self {
@@ -28,4 +33,25 @@ pub fn create_book(title: String, author: &String, page: u32) {
     println!("{}", book.title);
     println!("{}", book.page);
     println!("====================");
+
+    let rect = Rectangle {
+        width: 30,
+        hieght: 50,
+    };
+
+    let area = rect.area();
+    let perimeter = rect.perimeter();
+    println!("AREA {}, PERIMETE{}", area, perimeter);
+}
+
+/* method using struct */
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        return self.hieght * self.width;
+    }
+
+    fn perimeter(&self) -> u32 {
+        return 2 * (self.hieght + self.width);
+    }
 }
