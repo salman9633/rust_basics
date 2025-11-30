@@ -1,7 +1,9 @@
 mod practice_struct;
+mod tuples;
 
 use practice_struct::create_book;
 use practice_struct::Book;
+
 
 struct User {
     name: String,
@@ -61,5 +63,7 @@ fn main() {
     println!("{}",book1.title);
     println!("{}",book1.author);
     println!("{}",book1.page);
+
+    tuples::tuple_example();
     
 }
