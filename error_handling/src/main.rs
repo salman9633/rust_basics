@@ -1,18 +1,21 @@
-use std::{fmt::Error, fs};
+use std::fs::File;
+use std::io::ErrorKind;
 fn main() {
     let ret_fn=error_fn();
     println!("Function Called ");
 }
 
 fn error_fn() {
-    let res = fs::read_to_string("file.txt");
-     match res {
-        Ok(file) => file,
-        Err(e) => {
-            println!("Error: {}", e);
-            return;
-        }
-    };
+    // let res = File::read_to_string("file.txt");
+    //  match res {
+    //     Ok(file) => file,
+    //     Err(e) => {
+    //         println!("Error: {}", e);
+    //         return;
+    //     }
+    // };
+
+    read_a_file();
 }
 
 /* 
@@ -29,3 +32,21 @@ enum Result<T, E> {
     Err(E),
 }
 */
+
+fn read_a_file(){
+    let f = File::open("hello.txt");
+
+    let f=match f {
+        Ok(file)=>file,
+        Err(error)=>match error.kind() {
+            ErrorKind::NotFound=>match File::create("hello.txt") {
+                Ok(fc)=>fc,
+                Err(e)=>panic!("{:?}",e),
+            },
+            other_error=>{
+                panic!("problem Opening {:?}",other_error)
+            }
+        }
+        
+    };
+}
