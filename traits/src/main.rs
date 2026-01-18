@@ -1,6 +1,13 @@
 /* Defining Trait */
 trait Summary {
     fn summarize(&self) -> String;
+
+    /* Default Trait */
+    fn summarize_name(&self)->String{ 
+        //if we pass any thing then it takes thats return statment other wise this
+        //It is okay not to use this one inside impl
+        return String::from("His Name is Salman");
+    }
 }
 
 /* Defining Struct */
@@ -14,6 +21,8 @@ impl Summary for User {
     fn summarize(&self) -> String {
         return format!("The Name is {} of {} years of old", self.name, self.age);
     }
+
+
 }
 
 fn main() {
@@ -31,4 +40,5 @@ fn main() {
 
     /* using that trait function to get what we want */
     println!("{}", user.summarize());
+    println!("{}", user.summarize_name());
 }
