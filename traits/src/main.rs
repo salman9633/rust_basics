@@ -45,5 +45,19 @@ fn main() {
     /* using that trait function to get what we want */
     println!("{}", user.summarize());
     println!("{}", user.summarize_name());
-    notify_user(user);//we cant pass anything other than user here as summary trait implemented with User struct only we can implment Summary trait with other structs also 
+    notify_user(user); //we cant pass anything other than user here as summary trait implemented with User struct only we can implment Summary trait with other structs also
+}
+
+trait Printable {
+    fn print_item(&self);
+}
+
+struct Document {
+    title: String,
+}
+
+impl Printable for Document  {
+    fn print_item(&self) {
+        println!("Hello")
+    }
 }
