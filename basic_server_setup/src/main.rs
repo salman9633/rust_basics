@@ -26,29 +26,21 @@ fn handle_connection(mut stream: TcpStream) {
 
     let validate = b"GET / HTTP/1.1\r\n";
 
-    if buffer.starts_with(validate){
-        let content = fs::read_to_string("index.html").unwrap();
+    let (status_line, file_name) = if buffer.starts_with(validate) {
+        ("HTTP/1.1 200 OK","index.html")
+    } else {
+        ("HTTP/1.1 404 NOT FOUND","404.html")
+    };
 
-        let response = format!(
-            "HTTP/1.1 200 OK\r\nContent-Length: {}\r\n\r\n{}",
-            content.len(),
-            content
-        );
+    let content = fs::read_to_string(file_name).unwrap();
 
-        stream.write(response.as_bytes()).unwrap();
-        stream.flush().unwrap();
-    }else {
-        let content = fs::read_to_string("404.html").unwrap();
+    let response = format!(
+        "{}\r\nContent-Length: {}\r\n\r\n{}",
+        status_line,
+        content.len(),
+        content
+    );
 
-        let response = format!(
-            "HTTP/1.1 404 NOT FOUND\r\nContent-Length: {}\r\n\r\n{}",
-            content.len(),
-            content
-        );
-
-        stream.write(response.as_bytes()).unwrap();
-        stream.flush().unwrap();
-    }
-
-
+    stream.write(response.as_bytes()).unwrap();
+    stream.flush().unwrap();
 }
