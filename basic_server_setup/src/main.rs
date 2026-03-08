@@ -23,7 +23,7 @@ fn handle_connection(mut stream:TcpStream){
     //     String::from_utf8_lossy(&buffer[..])
     // );
 
-    let response = "HTTP/1.1 200 OK\r\n\r\n";
+    let response = "HTTP/1.1 200 OK\r\n\r\nHello from Rust web server!";
 
     stream.write(response.as_bytes()).unwrap();
     stream.flush().unwrap();
