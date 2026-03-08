@@ -23,4 +23,42 @@ impl Iterator<u16> for Counter{
     }
 }
 
-fn main() {}
+/*
+using Same Function name
+*/
+
+struct Human;
+
+trait Pilot{
+    fn fly(&self);
+}
+
+trait Wizard{
+    fn fly(&self);
+}
+
+impl Human{
+    fn fly(&self){
+        println!("Log from Struct Impl")
+    }
+}
+
+impl Pilot for Human{
+    fn fly(&self) {
+        println!("Log From Pilot Impl")
+    }
+}
+
+impl Wizard for Human {
+    fn fly(&self) {
+        println!("Log From Wizard impl")
+    }
+}
+
+
+fn main() {
+    let person=Human;
+    Pilot::fly(&person);
+    Wizard::fly(&person);
+    person.fly();
+}
