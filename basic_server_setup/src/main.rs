@@ -24,14 +24,31 @@ fn handle_connection(mut stream: TcpStream) {
     //     String::from_utf8_lossy(&buffer[..])
     // );
 
-    let content = fs::read_to_string("index.html").unwrap();
+    let validate = b"GET / HTTP/1.1\r\n";
 
-    let response = format!(
-        "HTTP/1.1 200 OK\r\nContent-Length: {}\r\n\r\n{}",
-        content.len(),
-        content
-    );
+    if buffer.starts_with(validate){
+        let content = fs::read_to_string("index.html").unwrap();
 
-    stream.write(response.as_bytes()).unwrap();
-    stream.flush().unwrap();
+        let response = format!(
+            "HTTP/1.1 200 OK\r\nContent-Length: {}\r\n\r\n{}",
+            content.len(),
+            content
+        );
+
+        stream.write(response.as_bytes()).unwrap();
+        stream.flush().unwrap();
+    }else {
+        let content = fs::read_to_string("404.html").unwrap();
+
+        let response = format!(
+            "HTTP/1.1 404 NOT FOUND\r\nContent-Length: {}\r\n\r\n{}",
+            content.len(),
+            content
+        );
+
+        stream.write(response.as_bytes()).unwrap();
+        stream.flush().unwrap();
+    }
+
+
 }
