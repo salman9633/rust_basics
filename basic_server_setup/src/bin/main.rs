@@ -1,16 +1,23 @@
-use std::fs;
+use std::{fs, thread};
 use std::io::{Read, Write};
 use std::net::TcpListener;
 use std::net::TcpStream;
+use basic_server_setup::ThreadPool;
 
 fn main() {
     let listner = TcpListener::bind("127.0.0.1:7878").unwrap();
     println!("Connecting to port 7878");
 
+    let pool = ThreadPool::new(4);
+
     for stream in listner.incoming() {
         let stream = stream.unwrap();
         println!("{:?}", stream);
-        handle_connection(stream);
+
+        pool.execute(||{
+            handle_connection(stream);
+        });
+        // handle_connection(stream);
     }
 }
 
